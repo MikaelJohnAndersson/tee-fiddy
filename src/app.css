@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Bombing";
+  src: url("/Bombing.ttf") format("truetype");
+}
+
+:root {
+  /* font-family: Inter, Avenir, Helvetica, Arial, sans-serif; */
+  @apply text-white/80;
+
+  --background-color: #242424;
+  --text-shadow: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+
+  font-family: monospace;
+  font-size: 16px;
+  line-height: 24px;
+
+  color-scheme: dark;
+  background-color: var(--background-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  max-width: 100vw;
+}
+
+fieldset {
+  @apply flex md:flex-col gap-3 border-none bg-black/20 px-4 py-1 rounded-sm;
+}
+
+select {
+  @apply w-fit p-1;
+}
+
+legend {
+  filter: var(--text-shadow);
+}
+
+label {
+  @apply flex flex-col font-bold;
+}
+
+input,
+select {
+  @apply font-medium;
+}
+
+button {
+  @apply py-2 px-4 font-bold uppercase border-white/80 border-2 rounded-sm h-fit hover:bg-black/50 transition-colors;
+  @apply disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:cursor-not-allowed;
+}
+
+.tooltip {
+  @apply opacity-80 transition-opacity;
+  @apply after:z-20 after:absolute after:hidden after:content-[attr(data-tooltip)] after:rounded-md after:p-2 after:text-sm after:w-60 after:-translate-x-3/4 after:mt-4;
+  @apply hover:cursor-pointer hover:opacity-100 hover:after:block;
+}
+
+.tooltip::after {
+  background: var(--background-color);
+}
+
+.bg-grid {
+  --line-color: #3f3f3f;
+  background-image: linear-gradient(var(--line-color) 2px, transparent 2px),
+    linear-gradient(90deg, var(--line-color) 2px, transparent 2px),
+    linear-gradient(var(--line-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-color) 1px, transparent 1px);
+  background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+}
